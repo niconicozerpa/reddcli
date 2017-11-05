@@ -1,5 +1,6 @@
 "use strict";
 
+import { setURL } from "./lib/urlmanager.js";
 import "whatwg-fetch";
 // import Promise from "bluebird";
 
@@ -139,7 +140,7 @@ export function fetchRedditURL(url) {
         const service_url = "https://api.reddit.com/" + String(url).replace(/^\//, "");
 
         if (location.pathname != url) {
-            history.pushState({ "url": `/${url}` }, null, url);
+            setURL(url);
         }
 
         const response = await fetch(service_url);
